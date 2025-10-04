@@ -15,7 +15,7 @@ illustrate  how harmonic prediction can be done using  standard libraries in Pyt
 
 **Do not use for navigation or operational decisions.**
 
-There is [PDF Manual](https://github.com/SmaniaD/Tide-Prediction/blob/main/manual/manual.pdf)) on how to use the script.
+There is [PDF Manual](https://github.com/SmaniaD/Tide-Prediction/blob/main/manual/manual.pdf) available.
 
 ## Examples
 
