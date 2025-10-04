@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Harmonic prediction for Fortaleza (station h283c).
+Harmonic Tide prediction  .
 – Reads CSV "year, month, day, hour, level_mm"
 – Converts to meters, splits into two halves
 – Fits 8 harmonics on the 1st half

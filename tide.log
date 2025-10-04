@@ -1,0 +1,85 @@
+2025-10-04 15:12:53,899 - INFO - Starting execution of tide.py
+2025-10-04 15:12:53,899 - INFO - CSV file: ./data/Honolulu.csv
+2025-10-04 15:12:53,899 - INFO - Parameters: initial_year=1993, final_year=2020, week_seed=42, animation_weeks=8
+2025-10-04 15:12:54,148 - INFO - Data filtered to period 1993-2020: 245448 records
+2025-10-04 15:12:54,148 - INFO - Data before filtering missing values: 245448 records
+2025-10-04 15:12:54,148 - INFO - No missing data (-32767) found
+2025-10-04 15:13:31,065 - INFO - Calculated 1457 4-week averages
+2025-10-04 15:13:31,065 - INFO - Overall average level: -1.420 m
+2025-10-04 15:13:31,066 - INFO - Standard deviation of averages: 0.064 m
+2025-10-04 15:13:31,066 - INFO - Trend: 0.003 m/year
+2025-10-04 15:13:31,066 - INFO - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
+2025-10-04 15:13:31,066 - INFO - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1400x800 -pix_fmt rgba -framerate 12.0 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y fortaleza-brazil_weekly_average.mp4
+2025-10-04 15:14:00,233 - INFO - Animation saved as: fortaleza-brazil_weekly_average.mp4
+2025-10-04 15:14:23,275 - INFO - Starting execution of tide.py
+2025-10-04 15:14:23,275 - INFO - CSV file: None
+2025-10-04 15:14:23,275 - INFO - Parameters: initial_year=None, final_year=None, week_seed=42, animation_weeks=4
+2025-10-04 15:14:29,036 - INFO - Selected file: data/Fortaleza-Brazil.csv
+2025-10-04 15:14:50,828 - INFO - Data before filtering missing values: 17520 records
+2025-10-04 15:14:50,829 - INFO - No missing data (-32767) found
+2025-10-04 15:14:58,742 - INFO - Calculated 101 4-week averages
+2025-10-04 15:14:58,742 - INFO - Overall average level: -3.340 m
+2025-10-04 15:14:58,742 - INFO - Standard deviation of averages: 0.018 m
+2025-10-04 15:14:58,742 - INFO - Trend: 0.023 m/year
+2025-10-04 15:14:58,743 - INFO - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
+2025-10-04 15:14:58,743 - INFO - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1400x800 -pix_fmt rgba -framerate 12.0 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y Fortaleza-Brazil_weekly_average_20251004_1514.mp4
+2025-10-04 15:15:26,243 - INFO - Starting execution of tide.py
+2025-10-04 15:15:26,243 - INFO - CSV file: data/Fortaleza-Brazil.csv
+2025-10-04 15:15:26,243 - INFO - Parameters: initial_year=None, final_year=None, week_seed=123, animation_weeks=4
+2025-10-04 15:15:34,830 - INFO - Data before filtering missing values: 23791 records
+2025-10-04 15:15:34,831 - INFO - No missing data (-32767) found
+2025-10-04 15:15:48,961 - INFO - Starting execution of tide.py
+2025-10-04 15:15:48,961 - INFO - CSV file: data/Fortaleza-Brazil.csv
+2025-10-04 15:15:48,961 - INFO - Parameters: initial_year=None, final_year=None, week_seed=123, animation_weeks=4
+2025-10-04 15:15:59,916 - INFO - Data before filtering missing values: 70128 records
+2025-10-04 15:15:59,918 - INFO - Removed 42 records with missing data (-32767)
+2025-10-04 15:15:59,919 - INFO - Data after filtering: 70086 records
+2025-10-04 15:16:15,218 - INFO - Starting execution of tide.py
+2025-10-04 15:16:15,218 - INFO - CSV file: data/Fortaleza-Brazil.csv
+2025-10-04 15:16:15,218 - INFO - Parameters: initial_year=None, final_year=None, week_seed=123, animation_weeks=4
+2025-10-04 15:16:22,859 - INFO - Data before filtering missing values: 61344 records
+2025-10-04 15:16:22,862 - INFO - Removed 42 records with missing data (-32767)
+2025-10-04 15:16:22,862 - INFO - Data after filtering: 61302 records
+2025-10-04 15:16:30,296 - INFO - Calculated 361 4-week averages
+2025-10-04 15:16:30,296 - INFO - Overall average level: -3.364 m
+2025-10-04 15:16:30,296 - INFO - Standard deviation of averages: 0.016 m
+2025-10-04 15:16:30,296 - INFO - Trend: 0.001 m/year
+2025-10-04 15:16:30,296 - INFO - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
+2025-10-04 15:16:30,296 - INFO - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1400x800 -pix_fmt rgba -framerate 12.0 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y Fortaleza-Brazil_weekly_average_20251004_1516.mp4
+2025-10-04 15:16:44,815 - INFO - Animation saved as: Fortaleza-Brazil_weekly_average_20251004_1516.mp4
+2025-10-04 15:16:54,196 - INFO - Starting execution of tide.py
+2025-10-04 15:16:54,196 - INFO - CSV file: data/Fortaleza-Brazil.csv
+2025-10-04 15:16:54,196 - INFO - Parameters: initial_year=None, final_year=None, week_seed=123, animation_weeks=4
+2025-10-04 15:17:01,771 - INFO - Data before filtering missing values: 67615 records
+2025-10-04 15:17:01,773 - INFO - Removed 42 records with missing data (-32767)
+2025-10-04 15:17:01,773 - INFO - Data after filtering: 67573 records
+2025-10-04 15:18:15,635 - INFO - Starting execution of tide.py
+2025-10-04 15:18:15,635 - INFO - CSV file: ./data/Fortaleza-Brazil.csv
+2025-10-04 15:18:15,635 - INFO - Parameters: initial_year=None, final_year=None, week_seed=7, animation_weeks=4
+2025-10-04 15:18:23,582 - INFO - Data before filtering missing values: 61344 records
+2025-10-04 15:18:23,584 - INFO - Removed 42 records with missing data (-32767)
+2025-10-04 15:18:23,584 - INFO - Data after filtering: 61302 records
+2025-10-04 15:18:30,383 - INFO - Calculated 361 4-week averages
+2025-10-04 15:18:30,383 - INFO - Overall average level: -3.364 m
+2025-10-04 15:18:30,383 - INFO - Standard deviation of averages: 0.016 m
+2025-10-04 15:18:30,383 - INFO - Trend: 0.001 m/year
+2025-10-04 15:18:30,384 - INFO - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
+2025-10-04 15:18:30,384 - INFO - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1400x800 -pix_fmt rgba -framerate 12.0 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y Fortaleza-Brazil_weekly_average_20251004_1518.mp4
+2025-10-04 15:18:44,823 - INFO - Animation saved as: Fortaleza-Brazil_weekly_average_20251004_1518.mp4
+2025-10-04 15:18:51,487 - INFO - Starting execution of tide.py
+2025-10-04 15:18:51,487 - INFO - CSV file: ./data/Fortaleza-Brazil.csv
+2025-10-04 15:18:51,487 - INFO - Parameters: initial_year=1998, final_year=2015, week_seed=42, animation_weeks=12
+2025-10-04 15:18:51,510 - ERROR - Error: Initial year 1998 is before available data starts (2008)
+2025-10-04 15:19:29,065 - INFO - Starting execution of tide.py
+2025-10-04 15:19:29,066 - INFO - CSV file: ./data/Honolulu.csv
+2025-10-04 15:19:29,066 - INFO - Parameters: initial_year=1998, final_year=2015, week_seed=42, animation_weeks=12
+2025-10-04 15:19:29,299 - INFO - Data filtered to period 1998-2015: 157776 records
+2025-10-04 15:19:29,299 - INFO - Data before filtering missing values: 157776 records
+2025-10-04 15:19:29,300 - INFO - No missing data (-32767) found
+2025-10-04 15:19:37,966 - INFO - Calculated 936 4-week averages
+2025-10-04 15:19:37,966 - INFO - Overall average level: -1.427 m
+2025-10-04 15:19:37,966 - INFO - Standard deviation of averages: 0.054 m
+2025-10-04 15:19:37,966 - INFO - Trend: 0.002 m/year
+2025-10-04 15:19:37,966 - INFO - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
+2025-10-04 15:19:37,966 - INFO - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1400x800 -pix_fmt rgba -framerate 12.0 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y honolulu_weekly_average.mp4
+2025-10-04 15:20:20,073 - INFO - Animation saved as: honolulu_weekly_average.mp4

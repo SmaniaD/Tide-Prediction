@@ -1,0 +1,310 @@
+\documentclass[11pt,a4paper]{article}
+
+% --------------------------------------------------
+% Basic packages
+% --------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  urlcolor=blue!60!black,
+  citecolor=blue!60!black,
+  pdfauthor={Your Name},
+  pdftitle={User Manual: Harmonic Tide Prediction}
+}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{amsmath, amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{caption}
+
+% --------------------------------------------------
+% Listings configuration (Python code)
+% --------------------------------------------------
+\definecolor{codebg}{HTML}{0A0A0A}
+\definecolor{codeframe}{HTML}{444444}
+\definecolor{codetext}{HTML}{FFFFFF}
+\definecolor{codekw}{HTML}{9CDCFE}
+\definecolor{codestr}{HTML}{CE9178}
+\definecolor{codecom}{HTML}{6A9955}
+\lstdefinestyle{py}{
+  language=Python,
+  basicstyle=\ttfamily\small\color{codetext},
+  keywordstyle=\bfseries\color{codekw},
+  stringstyle=\color{codestr},
+  commentstyle=\itshape\color{codecom},
+  backgroundcolor=\color{codebg},
+  frame=single,
+  rulecolor=\color{codeframe},
+  frameround=tttt,
+  breaklines=true,
+  showstringspaces=false,
+  tabsize=2,
+  keepspaces=true,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  numbersep=8pt
+}
+\captionsetup[lstlisting]{labelfont=bf}
+
+% --------------------------------------------------
+% Document
+% --------------------------------------------------
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{User Manual: Harmonic Tide Prediction}}\\[0.5em]
+\large Script name: \texttt{tide.py} \quad(\textit{Python 3})\\[0.25em]
+\end{center}
+
+\begin{abstract}
+This manual explains how to run, and interpret the outputs of a non-profissional harmonic prediction tool for sea level that generates a short animation.  The program reads an hourly time series in CSV format (\texttt{year,month,day,hour,level\_mm}), converts levels from millimeters to meters, splits the record into two halves (training and test), fits a tidal harmonic model by least squares on the first half, and, on the second half, animates sliding 7-day windows comparing observed vs.\ predicted levels. It also computes and plots 4-week moving averages over the full period and saves an animation as MP4 via \texttt{ffmpeg}.
+
+This software is not for profissional use. It was created using vibe programming to illustrate  how harmonic prediction can be done using  standard libraries in Python. 
+\end{abstract}
+
+\tableofcontents
+
+\section{Overview}
+The software implements the harmonic model
+\[
+y(t)=\beta_0+\sum_{k=1}^{K}\bigl(A_k\cos(\omega_k t)+B_k\sin(\omega_k t)\bigr),
+\]
+where $y(t)$ is sea level (in meters) relative to a mean offset, $\omega_k$ are angular frequencies in rad/s derived from standard speeds in degrees per hour, and $(\beta_0,A_k,B_k)$ are estimated by least squares. The frequency set follows the NOS/CO-OPS \emph{standard suite} (about 37 constituents including M2, S2, N2, K1, O1, etc.), together with shallow-water and long-period terms as encoded in \texttt{SPEEDS\_DPH}.
+
+This software is not for profissional use. It was created using vibe programming to illustrate  how harmonic prediction can be done using  standard libraries in Python. 
+
+\section{Requirements}
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Python 3.8+}
+  \item Python packages: \texttt{numpy}, \texttt{pandas}, \texttt{matplotlib}
+  \item \textbf{ffmpeg} installed and on your \texttt{PATH} (for saving the animation)
+\end{itemize}
+
+ 
+
+\section{Input data (CSV)}
+\subsection{Format}
+The CSV must have \textbf{five columns without a header}:
+\[
+\texttt{year, month, day, hour, level\_mm}
+\]
+\begin{itemize}[leftmargin=1.5em]
+  \item \texttt{year}, \texttt{month}, \texttt{day}, \texttt{hour} are integers in UTC.
+  \item \texttt{level\_mm} is an integer in millimeters; the program converts it to meters.
+  \item Missing values are flagged by \texttt{-32767} mm (i.e., $-32.767$ m) and are \textbf{removed}.
+\end{itemize}
+
+The data available in the folder ./data/ for the cities   Honolulu, Fortaleza and Salvador were obtained  for University of Hawai'i Sea Level Center (UHSLC) \url{https://uhslc.soest.hawaii.edu/data/} and the license described there for this data applies. If  you use UHSLC tide gauge data in your research or applications, please cite the dataset as:
+
+Caldwell, P. C., M. A. Merrifield, P. R. Thompson (2015), Sea level measured by tide gauges from global oceans — the Joint Archive for Sea Level holdings (NCEI Accession 0019568), Version 5.5, NOAA National Centers for Environmental Information, Dataset, doi:10.7289/V5V40S7W.
+
+\subsection{File location}
+\begin{itemize}[leftmargin=1.5em]
+  \item If \texttt{--csv\_file} is \textbf{not} provided, the program lists \texttt{.csv} files under \texttt{./data/} and prompts you to choose one.
+  \item If \texttt{--csv\_file} is provided, the path must exist; otherwise execution aborts with an error.
+\end{itemize}
+
+\section{Quick start}
+Minimal example 1 (Interative):
+\begin{lstlisting}[style=py]
+python tide.py 
+\end{lstlisting}
+Minimal example 2:
+\begin{lstlisting}[style=py]
+python tide.py --csv_file ./data/Honolulu.csv --initial_year 1920 --final_year 2000 \
+  --week_seed 42 --animation_weeks 4 --local "Honolulu" --animation_speed 1.0
+\end{lstlisting}
+
+On launch, the program:
+\begin{enumerate}[leftmargin=1.5em]
+  \item Reads and sorts the time series; reports available year range.
+  \item If \texttt{--initial\_year}/\texttt{--final\_year} are missing, prompts for years interactively.
+  \item Removes missing values (\texttt{-32767}) and checks that at least 100 samples remain.
+  \item Splits data into two halves: training (first half) and test (second half).
+  \item Subtracts the \emph{offset} (training mean) from both halves.
+  \item Fits harmonic coefficients by least squares on the training set.
+  \item Predicts over the test period and starts a 7-day sliding-window animation.
+  \item Computes \& plots 4-week moving averages and saves a PNG.
+  \item Saves an MP4 animation using \texttt{ffmpeg}.
+\end{enumerate}
+
+\section{Command-line options}
+\begin{longtable}{@{}p{4cm}p{3cm}p{8cm}@{}}
+\toprule
+\textbf{Option} & \textbf{Type / Default} & \textbf{Description}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Option} & \textbf{Type / Default} & \textbf{Description}\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+\texttt{--csv\_file} &
+\texttt{str} / (none) &
+Path to the CSV file. If omitted, the program scans \texttt{./data/} and asks interactively.\\[0.3em]
+
+\texttt{--initial\_year} &
+\texttt{int} / (available minimum) &
+Start year of the time slice. Validated not to be before the earliest year. If both years are omitted, selection is interactive.\\[0.3em]
+
+\texttt{--final\_year} &
+\texttt{int} / (available maximum) &
+End year of the time slice. Validated not to exceed the latest year and to be $\ge$ start year.\\[0.3em]
+
+\texttt{--week\_seed} &
+\texttt{int} / \texttt{42} &
+RNG seed for the initial window position in the test half. Ensures reproducible starting week.\\[0.3em]
+
+\texttt{--animation\_weeks} &
+\texttt{int} / \texttt{4} &
+Animation duration in \emph{weeks} (limits the number of frames). Increase to cover more of the test period.\\[0.3em]
+
+\texttt{--local} &
+\texttt{str} / \texttt{""} &
+Station/location name shown in titles and used to compose the video filename.\\[0.3em]
+
+\texttt{--animation\_speed} &
+\texttt{float} / \texttt{1.0} &
+Speed multiplier for the animation (affects the per-frame step in samples). Larger values advance faster. PS: use 1.0 (there is a bug here)\\
+
+\end{longtable}
+
+\paragraph{Practical examples.}
+\begin{enumerate}[leftmargin=1.5em]
+  \item Interactive CSV and year selection:
+\begin{lstlisting}[style=py]
+python tide.py
+\end{lstlisting}
+  \item Years 1998--2015, 12-week animation, 1x speed:
+\begin{lstlisting}[style=py]
+python tide.py --csv_file ./data/Honolulu.csv --initial_year 1998 --final_year 2015 \
+  --animation_weeks 12 --animation_speed 1.0 --local "Honolulu"
+\end{lstlisting}
+  \item Reproduce the same initial week with a fixed seed:
+\begin{lstlisting}[style=py]
+python tide.py --csv_file ./data/Fortaleza-Brazil.csv --week_seed 7
+\end{lstlisting}
+\end{enumerate}
+
+\section{Harmonic model and fitting}
+\subsection{Constituent set}
+The script defines a dictionary of speeds in degrees per hour (\texttt{SPEEDS\_DPH}) with $\approx 37$ standard constituents (M2, S2, N2, K2, K1, O1, P1, Q1, \dots), shallow-water harmonics (M4, MS4, MN4, M6, M8), long-period terms (SA, SSA, MF, MM, MSF), and some additional components. You may edit this list directly to tailor the model.
+
+\subsection{Frequencies}
+Each speed $v$ (deg/h) is converted to a period $T$ in hours via $T=360/v$. The angular frequency in rad/s is
+\[
+\omega=\frac{2\pi}{T\cdot 3600}.
+\]
+Time is referenced to the first training timestamp $t_0$ using $t=(\text{timestamp}-t_0)$ in seconds.
+
+\subsection{Design matrix and least squares}
+The design matrix contains a column of ones and, for each $\omega_k$, the columns $\cos(\omega_k t)$ and $\sin(\omega_k t)$. Parameters $\theta$ are estimated by \texttt{numpy} least squares:
+\[
+\theta=\arg\min_\theta \|X\theta - y\|_2^2.
+\]
+The training mean (offset) is subtracted from both training and test so that predictions and observations share the same baseline in plots.
+
+\section{Animation: sliding 7-day window}
+\subsection{Windowing and frames}
+\begin{itemize}[leftmargin=1.5em]
+  \item The \emph{test} half is traversed with 7-day windows.
+  \item The number of samples per window is derived from the data timestep $\Delta t$.
+  \item The initial position is drawn using \texttt{--week\_seed}.
+  \item \texttt{--animation\_weeks} limits the total number of frames.
+  \item \texttt{--animation\_speed} scales the per-frame shift (in samples).
+\end{itemize}
+
+\subsection{Visual style}
+The script uses a dark theme (\texttt{plt.style.use('dark\_background')}), solid lines for observations and dashed lines for predictions, a subtle grid, and titles summarizing the total data period, current window, and number of constituents. The $y$-axis limits adapt to each window with a 10\% margin.
+
+\subsection{Video output}
+The animation is built with \texttt{matplotlib.animation.FuncAnimation} and saved via \texttt{ffmpeg}. Default filename rules:
+\begin{itemize}[leftmargin=1.5em]
+  \item If \texttt{--local} is provided: \texttt{\{local\_lower\}\_weekly\_average.mp4}.
+  \item Otherwise: \texttt{\{csv\_basename\}\_weekly\_average\_\{YYYYMMDD\_HHMM\}.mp4}.
+\end{itemize}
+
+\section{Four-week moving averages}
+After the animation, the program computes 4-week averages (with a 1-week stride for time markers) across the \emph{entire} record, using the same offset removed during training. It also fits a linear trend in time (years) and displays the slope in m/year in the legend. The figure is saved as:
+\[
+\texttt{\{csv\_basename\}\_average\_level\_4\_weeks\_\{YYYYMMDD\_HHMM\}.png}.
+\]
+
+\section{Logging}
+Events are recorded to \texttt{tide.log}: full command line, chosen CSV, filtered period, record counts, number of 4-week averages, basic statistics (mean, std), and, if applicable, the trend slope.
+
+\section{Key validations and messages}
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Missing CSV}: execution stops with an error.
+  \item \textbf{Invalid year range}: start $<$ available minimum, end $>$ available maximum, or start $>$ end $\rightarrow$ error.
+  \item \textbf{After missing-value filtering}: if fewer than 100 records remain, execution stops with an error.
+\end{itemize}
+
+\section{Customization and extensions}
+\subsection{Change constituents}
+Edit \texttt{SPEEDS\_DPH} to add/remove constituents. Closely spaced frequencies can cause ill-conditioning; consider regularization or selecting a subset.
+
+\subsection{Window length}
+To animate windows other than 7 days, change \texttt{win\_days} in the code and recompute \texttt{win\_samples} accordingly.
+
+\subsection{Styling}
+Colors, line widths, and fonts can be adjusted where \texttt{line\_r}, \texttt{line\_p}, axes, and legends are defined.
+
+\subsection{GIF export}
+Switching the writer to \texttt{PillowWriter} allows saving GIFs, though MP4 via \texttt{ffmpeg} usually yields better quality and size.
+
+\section{Best practices and reproducibility}
+\begin{itemize}[leftmargin=1.5em]
+  \item Fix \texttt{--week\_seed} to reproduce the same starting window.
+  \item Record the exact command line (also logged in \texttt{tide.log}).
+\end{itemize}
+
+\section{Troubleshooting (FAQ)}
+\begin{description}[leftmargin=1.5em, style=nextline]
+  \item[\texttt{Error: File '...' not found.}] Check the \texttt{--csv\_file} path or place the CSV under \texttt{./data/}.
+  \item[\texttt{No CSV files found} during interactive run] Create \texttt{data/} and move your CSV(s) there.
+  \item[\texttt{Insufficient data after filtering}] After removing missing values, fewer than 100 rows remain.
+  \item[Video not saved / \texttt{ffmpeg} error] Ensure \texttt{ffmpeg} is installed and on your \texttt{PATH}.
+  \item[Unreadable colors/labels] Adjust the theme colors or increase \texttt{fontsize} in the plotting section.
+\end{description}
+
+\section*{Quick reference}
+\begin{lstlisting}[style=py, caption={Common commands}]
+# 1) Full run with labels and 8-week animation
+python tide.py --csv_file ./data/Honolulu.csv --initial_year 1993 --final_year 2020 \
+  --local "Fortaleza-Brazil" --animation_weeks 8 --animation_speed 1.0
+
+# 2) Interactive run (no args): select CSV and years at the prompt
+python tide.py
+
+# 3) Faster animation and fixed starting week
+python tide.py --csv_file data/Fortaleza-Brazil.csv --week_seed 123 --animation_speed 1.0
+\end{lstlisting}
+
+\section*{Credits and license}
+The license for the code is MIT. 
+
+The data available in the folder ./data/ for the cites   Honolulu, Fortaleza and Salvador were obtained  for University of Hawai'i Sea Level Center (UHSLC) \url{https://uhslc.soest.hawaii.edu/data/} and the license described there for this data applies. If  you use UHSLC tide gauge data in your research or applications, please cite the dataset as:
+
+Caldwell, P. C., M. A. Merrifield, P. R. Thompson (2015), Sea level measured by tide gauges from global oceans — the Joint Archive for Sea Level holdings (NCEI Accession 0019568), Version 5.5, NOAA National Centers for Environmental Information, Dataset, doi:10.7289/V5V40S7W.
+
+\vfill
+\begin{center}
+\small \textit{This manual was last updated on \today.}
+\end{center}
+
+\end{document}
