@@ -15,6 +15,8 @@ illustrate  how harmonic prediction can be done using  standard libraries in Pyt
 
 **Do not use for navigation or operational decisions.**
 
+There is [PDF Manual](https://github.com/SmaniaD/Tide-Prediction/blob/main/manual/manual.pdf)) on how to use the script.
+
 ## Examples
 
 Tide Predition vs Colleted Data for Salvador-Brazil
@@ -41,12 +43,7 @@ Average sea level along 100 years for Honolulu
 - Python ≥ 3.8 · `numpy`, `pandas`, `matplotlib`
 - `ffmpeg` on PATH (for MP4)
 
-Setup:
-```bash
-python3 -m venv .venv && source .venv/bin/activate
-pip install numpy pandas matplotlib
-# install ffmpeg via apt/brew/choco/winget, etc.
-```
+ 
 
 ## Data
 Sample CSVs in `./data/`: **Honolulu**, **Fortaleza**, **Salvador**  
