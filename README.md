@@ -3,6 +3,19 @@
 > **Demo only — not for navigation/operations.**
 >
 >Illustrates harmonic tide prediction with standard Python tools.
+>
+## Examples
+
+Tide Predition vs Colleted Date in Salvado-Brazil
+
+![Honolulu](https://github.com/SmaniaD/Tide-Prediction/blob/main/Honolulu_weekly_average_20251004_1541.mp4)
+
+
+
+Average sea level along 100 years in Honolulu
+
+
+
 
 ## What it does
 - Reads hourly CSV `year,month,day,hour,level_mm`
