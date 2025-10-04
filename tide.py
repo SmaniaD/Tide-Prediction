@@ -526,6 +526,9 @@ else:
 	# Generate filename with current date and time
 	current_time = datetime.now().strftime("%Y%m%d_%H%M")
 	video_filename = f"{base_filename}_weekly_average_{current_time}.mp4"
+	video_filename_gif = f"{base_filename}_weekly_average_{current_time}.gif"
 
 ani.save(video_filename, writer="ffmpeg", fps=1000/interval_ms)
+ani.save(video_filename_gif, writer="pillow", fps=1000/interval_ms)
+logger.info(f"Animation saved as GIF: {video_filename_gif}")
 logger.info(f"Animation saved as: {video_filename}")
