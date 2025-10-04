@@ -19,7 +19,7 @@ There is [PDF Manual](https://github.com/SmaniaD/Tide-Prediction/blob/main/manua
 
 ## Examples
 
-Tide Predition vs Colleted Data for Salvador-Brazil
+Tide Prediction vs Colleted Data for Salvador-Brazil
 
 ![Salvador-Brazil](https://github.com/SmaniaD/Tide-Prediction/blob/main/Salvador-Brazil_prediction.gif)
 
