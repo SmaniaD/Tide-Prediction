@@ -12,7 +12,7 @@ Tide Predition vs Colleted Date for Salvador-Brazil
 
 
 
-Average sea level along 100 years in Honolulu
+Average sea level along 100 years for Honolulu
 
 
 ![Honolulu](https://github.com/SmaniaD/Tide-Prediction/blob/main/Honolulu_average_level_4_weeks.png)
