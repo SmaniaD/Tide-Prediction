@@ -1,20 +1,20 @@
 # Harmonic Tide Prediction 
 
-> **Demo only — not for navigation/operations.**
->
->Illustrates harmonic tide prediction with standard Python tools.
->a non-profissional harmonic prediction tool for sea level that generates a short animation.
-> The program reads an hourly time series in CSV format, converts levels from >millimeters to
-> meters, splits the record into two halves (training and test), fits a tidal harmonic model
-> by least squares on the first half, and, on the second half, animates sliding 7-day windows
->  comparing observed vs. predicted levels. It also computes and plots 4-week moving averages
->  over the full period.
->
-> This software is not for profissional use. It was created using vibe programming to
->illustrate  how harmonic prediction can be done using  standard libraries in Python.
->
-> **Do not use for navigation or operational decisions.**
->
+ **Demo only — not for navigation/operations.**
+
+This script Illustrates harmonic tide prediction with standard Python tools.
+a non-profissional harmonic prediction tool for sea level that generates a short animation.
+The script  reads an hourly time series in CSV format, converts levels from >millimeters to
+meters, splits the record into two halves (training and test), fits a tidal harmonic model
+by least squares on the first half, and, on the second half, animates sliding 7-day windows
+comparing observed vs. predicted levels. It also computes and plots 4-week moving averages
+over the full period.
+
+This software is not for profissional use. It was created using vibe programming to
+illustrate  how harmonic prediction can be done using  standard libraries in Python.
+
+**Do not use for navigation or operational decisions.**
+
 ## Examples
 
 Tide Predition vs Colleted Date for Salvador-Brazil
