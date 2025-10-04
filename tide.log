@@ -213,3 +213,35 @@
 2025-10-04 15:58:04,278 - INFO - Animation.save using <class 'matplotlib.animation.PillowWriter'>
 2025-10-04 15:58:27,790 - INFO - Animation saved as GIF: Salvador-Brazil_weekly_average_20251004_1557.gif
 2025-10-04 15:58:27,791 - INFO - Animation saved as: Salvador-Brazil_weekly_average_20251004_1557.mp4
+2025-10-04 16:06:00,532 - INFO - Starting execution of tide.py
+2025-10-04 16:06:00,533 - INFO - CSV file: None
+2025-10-04 16:06:00,533 - INFO - Parameters: initial_year=None, final_year=None, week_seed=42, animation_weeks=3
+2025-10-04 16:06:04,127 - INFO - Selected file: data/Salvador-Brazil.csv
+2025-10-04 16:06:11,043 - INFO - Data before filtering missing values: 113952 records
+2025-10-04 16:06:11,046 - INFO - Removed 2528 records with missing data (-32767)
+2025-10-04 16:06:11,046 - INFO - Data after filtering: 111424 records
+2025-10-04 16:06:25,775 - INFO - Calculated 660 4-week averages
+2025-10-04 16:06:25,776 - INFO - Overall average level: -2.288 m
+2025-10-04 16:06:25,776 - INFO - Standard deviation of averages: 0.044 m
+2025-10-04 16:06:25,776 - INFO - Trend: 0.000 m/year
+2025-10-04 16:06:25,776 - INFO - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
+2025-10-04 16:06:25,776 - INFO - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1400x800 -pix_fmt rgba -framerate 12.0 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y Salvador-Brazil_prediction_20251004_1606.mp4
+2025-10-04 16:06:36,522 - INFO - Animation.save using <class 'matplotlib.animation.PillowWriter'>
+2025-10-04 16:06:59,999 - INFO - Animation saved as GIF: Salvador-Brazil_prediction_20251004_1606.gif
+2025-10-04 16:06:59,999 - INFO - Animation saved as: Salvador-Brazil_prediction_20251004_1606.mp4
+2025-10-04 16:07:43,237 - INFO - Starting execution of tide.py
+2025-10-04 16:07:43,237 - INFO - CSV file: None
+2025-10-04 16:07:43,237 - INFO - Parameters: initial_year=None, final_year=None, week_seed=42, animation_weeks=4
+2025-10-04 16:07:45,751 - INFO - Selected file: data/Honolulu.csv
+2025-10-04 16:07:56,802 - INFO - Data before filtering missing values: 885360 records
+2025-10-04 16:07:56,811 - INFO - Removed 14027 records with missing data (-32767)
+2025-10-04 16:07:56,811 - INFO - Data after filtering: 871333 records
+2025-10-04 16:08:06,521 - INFO - Calculated 5183 4-week averages
+2025-10-04 16:08:06,522 - INFO - Overall average level: -1.304 m
+2025-10-04 16:08:06,522 - INFO - Standard deviation of averages: 0.071 m
+2025-10-04 16:08:06,522 - INFO - Trend: 0.001 m/year
+2025-10-04 16:08:06,522 - INFO - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
+2025-10-04 16:08:06,522 - INFO - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1400x800 -pix_fmt rgba -framerate 12.0 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y Honolulu_prediction_20251004_1608.mp4
+2025-10-04 16:08:21,122 - INFO - Animation.save using <class 'matplotlib.animation.PillowWriter'>
+2025-10-04 16:08:52,379 - INFO - Animation saved as GIF: Honolulu_prediction_20251004_1608.gif
+2025-10-04 16:08:52,379 - INFO - Animation saved as: Honolulu_prediction_20251004_1608.mp4

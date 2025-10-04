@@ -525,8 +525,8 @@ else:
 	base_filename = Path(args.csv_file).stem
 	# Generate filename with current date and time
 	current_time = datetime.now().strftime("%Y%m%d_%H%M")
-	video_filename = f"{base_filename}_weekly_average_{current_time}.mp4"
-	video_filename_gif = f"{base_filename}_weekly_average_{current_time}.gif"
+	video_filename = f"{base_filename}_prediction_{current_time}.mp4"
+	video_filename_gif = f"{base_filename}_prediction_{current_time}.gif"
 
 ani.save(video_filename, writer="ffmpeg", fps=1000/interval_ms)
 ani.save(video_filename_gif, writer="pillow", fps=1000/interval_ms)
