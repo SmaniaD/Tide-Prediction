@@ -373,7 +373,8 @@ def update(i):
 	ax.set_ylim(y_min - margin, y_max + margin)
 	
 	# Main title with location
-	main_title = f"{args.local.upper()} - HARMONIC PREDICTION" if args.local else "HARMONIC PREDICTION"
+	base_filename = Path(args.csv_file).stem
+	main_title = f"{args.local.upper()} - HARMONIC PREDICTION" if args.local else "HARMONIC PREDICTION- " + base_filename.upper()
 	
 	# Subtitle with detailed info
 	period_str = f"{year_min}-{year_max}" if 'year_min' in locals() else f"{df.index[0].year}-{df.index[-1].year}"
@@ -491,8 +492,9 @@ for text in legend_means.get_texts():
 	text.set_color('white')
 
 # Title
+base_filename = Path(args.csv_file).stem
 period_full = f"{all_data.index[0].year}-{all_data.index[-1].year}"
-title_means = f"{args.local.upper()} - OBSERVED AVERAGE LEVEL (4 WEEKS)" if args.local else "OBSERVED AVERAGE LEVEL (4 WEEKS)"
+title_means = f"{args.local.upper()} - OBSERVED AVERAGE LEVEL (4 WEEKS)" if args.local else "OBSERVED AVERAGE LEVEL (4 WEEKS)- " + base_filename.upper()
 fig_means.suptitle(f"{title_means}\nPeriod: {period_full} | Total: {len(dates_4w)} periods of 4 weeks", 
 				   fontsize=20, color='white', fontweight='bold', y=0.95)
 
