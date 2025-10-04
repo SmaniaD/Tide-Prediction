@@ -2,7 +2,7 @@
 
  **Demo only — not for navigation/operations.**
 
-This script Illustrates harmonic tide prediction with standard Python tools.
+This script Illustrates harmonic tide prediction with standard Python tools. It is 
 a non-profissional harmonic prediction tool for sea level that generates a short animation.
 The script  reads an hourly time series in CSV format, converts levels from >millimeters to
 meters, splits the record into two halves (training and test), fits a tidal harmonic model
