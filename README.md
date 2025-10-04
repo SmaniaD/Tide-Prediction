@@ -17,7 +17,7 @@ illustrate  how harmonic prediction can be done using  standard libraries in Pyt
 
 ## Examples
 
-Tide Predition vs Colleted Date for Salvador-Brazil
+Tide Predition vs Colleted Data for Salvador-Brazil
 
 ![Salvador-Brazil](https://github.com/SmaniaD/Tide-Prediction/blob/main/Salvador-Brazil_prediction.gif)
 
