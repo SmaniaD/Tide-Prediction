@@ -1,6 +1,8 @@
 # Harmonic Tide Prediction — README (Short)
 
-> **Demo only — not for navigation/operations.** Illustrates harmonic tide prediction with standard Python tools.
+> **Demo only — not for navigation/operations.**
+>
+>Illustrates harmonic tide prediction with standard Python tools.
 
 ## What it does
 - Reads hourly CSV `year,month,day,hour,level_mm`
