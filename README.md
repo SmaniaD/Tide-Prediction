@@ -8,14 +8,14 @@
 
 Tide Predition vs Colleted Date in Salvador-Brazil
 
-![Salvador-Brazil](https://github.com/SmaniaD/Tide-Prediction/blob/main/Salvador-Brazil_weekly_average_20251004_1557.gif)
+![Salvador-Brazil](https://github.com/SmaniaD/Tide-Prediction/blob/main/Salvador-Brazil_prediction.gif)
 
 
 
 Average sea level along 100 years in Honolulu
 
 
-
+![Honolulu](https://github.com/SmaniaD/Tide-Prediction/blob/main/Honolulu_average_level_4_weeks.png
 
 ## What it does
 - Reads hourly CSV `year,month,day,hour,level_mm`
