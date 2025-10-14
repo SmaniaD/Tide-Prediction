@@ -47,7 +47,7 @@ Average sea level along 100 years for Honolulu
 
 ## Data
 Sample CSVs in `./data/`: **Honolulu**, **Fortaleza**, **Salvador**  
-Source: University of Hawai‘i Sea Level Center (UHSLC) — the data keep UHSLC terms.  
+Source: ![University of Hawai‘i Sea Level Center (UHSLC)](https://uhslc.soest.hawaii.edu/data/) — the data keep UHSLC terms.  
 **Cite if used:**  
 Caldwell, Merrifield, Thompson (2015), *Sea level measured by tide gauges…* NOAA NCEI, doi:10.7289/V5V40S7W.
 
